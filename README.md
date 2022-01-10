@@ -1,6 +1,4 @@
-# nuxt-todo-manager
-
-## Live demo is [here](https://nuxt-todo-manager.netlify.app)
+# nuxt-express-todo-manager
 
 ## Build Setup
 
