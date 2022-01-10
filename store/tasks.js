@@ -40,7 +40,7 @@ export const actions = {
   },
 
   unassignTasksFromUser({ commit }, payload) {
-    taskService.unassignTasksFromUser({ userId: payload.userId }).then(() => {
+    taskService.unassignTasksFromUser(payload).then(() => {
       commit('unassignTasksFromUser', payload)
     })
   },

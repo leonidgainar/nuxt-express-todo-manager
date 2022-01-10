@@ -3,21 +3,23 @@ import { Task } from '../models/Task'
 
 const unassignTasksFromUser = async (req, res) => {
   try {
-    const updatedTasks = await Task.updateMany(
-      {
-        assignedTo: req.body.userId,
-      },
-      { assignedTo: '' },
-      { new: true }
-    )
-      .lean()
-      .exec()
+    await req.body.tasks.forEach(async (taskId) => {
+      const updatedTask = await Task.findOneAndUpdate(
+        {
+          _id: taskId,
+          assignedTo: req.body.userId,
+        },
+        { assignedTo: '' },
+        { new: true }
+      )
+        .lean()
+        .exec()
 
-    if (!updatedTasks) {
-      return res.status(400).end()
-    }
-
-    res.status(200).json({ data: updatedTasks })
+      if (!updatedTask) {
+        return res.status(400).end()
+      }
+    })
+    res.status(200).end()
   } catch (e) {
     console.error(e)
     res.status(400).end()

@@ -18,7 +18,7 @@ export default {
   deleteTask(taskId) {
     return api.delete(`tasks/${taskId}`).then((response) => response.data)
   },
-  unassignTasksFromUser(userId) {
-    return api.put(`tasks/`, userId).then((response) => response.data)
+  unassignTasksFromUser(payload) {
+    return api.put(`tasks/`, payload).then((response) => response)
   },
 }
