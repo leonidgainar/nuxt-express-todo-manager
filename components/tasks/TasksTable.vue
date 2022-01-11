@@ -21,11 +21,11 @@
         <tbody class="table-body">
           <tr v-for="task in tasks" :key="task._id">
             <td class="px-6 py-4 text-left">
-              {{ task.title }}
+              {{ truncateText(task.title, 20) }}
             </td>
             <td class="px-6 py-4 text-left">
               <span v-if="getUserById(task.assignedTo)">
-                {{ getUserById(task.assignedTo).name }}
+                {{ truncateText(getUserById(task.assignedTo).name, 20) }}
               </span>
               <span v-else> N/A </span>
             </td>
@@ -60,6 +60,7 @@
 
 <script>
 import { createNamespacedHelpers } from 'vuex'
+import stringHelpers from '../../utils/stringHelpers'
 
 import TaskStatusLabel from '../tasks/TaskStatusLabel.vue'
 import TaskEditModal from '../tasks/TaskEditModal.vue'
@@ -117,6 +118,10 @@ export default {
     closeEditModal() {
       this.currentTask = {}
       this.showEditModal = false
+    },
+
+    truncateText(text, length) {
+      return stringHelpers.truncate(text, length, '...')
     },
   },
 }

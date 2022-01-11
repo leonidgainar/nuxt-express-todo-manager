@@ -20,7 +20,7 @@
         <tbody class="table-body">
           <tr v-for="user in users" :key="user._id">
             <td class="px-6 py-4 text-left align-top">
-              {{ user.name }}
+              {{ truncateText(user.name, 20) }}
             </td>
             <td class="px-6 py-4 text-left align-top">
               <div
@@ -29,7 +29,7 @@
                 class="flex justify-between text-gray-900 mb-2"
               >
                 <span v-if="getTaskById(task)">
-                  {{ getTaskById(task).title }}
+                  {{ truncateText(getTaskById(task).title, 20) }}
                 </span>
                 <TaskStatusLabel
                   v-if="getTaskById(task)"
@@ -64,6 +64,7 @@
 
 <script>
 import { createNamespacedHelpers } from 'vuex'
+import stringHelpers from '../../utils/stringHelpers'
 
 import TaskStatusLabel from '../tasks/TaskStatusLabel.vue'
 import UserEditModal from '../users/UserEditModal.vue'
@@ -120,6 +121,10 @@ export default {
     closeEditModal() {
       this.currentUser = {}
       this.showEditModal = false
+    },
+
+    truncateText(text, length) {
+      return stringHelpers.truncate(text, length, '...')
     },
   },
 }
