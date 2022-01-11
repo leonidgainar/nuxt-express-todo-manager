@@ -7,7 +7,12 @@
           <label class="form-label" for="name"> Name </label>
           <ValidationProvider
             v-slot="{ errors }"
-            :rules="{ required: true, min: 3, is_unique: [getUsersName] }"
+            :rules="{
+              required: true,
+              min: 3,
+              max: 64,
+              is_unique: [getUsersName],
+            }"
           >
             <input
               id="name"
