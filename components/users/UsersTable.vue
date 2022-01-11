@@ -21,7 +21,7 @@
           <tr v-for="user in users" :key="user._id">
             <td class="px-6 py-4 text-left align-top">
               <span :title="user.name">
-                {{ truncateText(user.name, 20) }}
+                {{ truncateText(user.name) }}
               </span>
             </td>
             <td class="px-6 py-4 text-left align-top">
@@ -31,7 +31,7 @@
                 class="flex justify-between text-gray-900 mb-2"
               >
                 <span v-if="getTaskById(task)" :title="getTaskById(task).title">
-                  {{ truncateText(getTaskById(task).title, 20) }}
+                  {{ truncateText(getTaskById(task).title) }}
                 </span>
                 <TaskStatusLabel
                   v-if="getTaskById(task)"
@@ -127,7 +127,7 @@ export default {
       this.showEditModal = false
     },
 
-    truncateText(text, length) {
+    truncateText(text, length = 20) {
       return stringHelpers.truncate(text, length, '...')
     },
   },
