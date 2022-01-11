@@ -1,8 +1,13 @@
+const path = require('path')
 const express = require('express')
 const mongoose = require('mongoose')
 
+require('dotenv').config({
+  path: path.join(__dirname, './.env'),
+})
+
 // DB connection
-mongoose.connect('mongodb://localhost:27017/todo-manager', {
+mongoose.connect(process.env.MONGODB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
