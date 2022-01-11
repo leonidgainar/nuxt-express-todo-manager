@@ -1,5 +1,5 @@
 import { extend } from 'vee-validate'
-import { required, min } from 'vee-validate/dist/rules'
+import { required, min, max } from 'vee-validate/dist/rules'
 
 extend('required', {
   ...required,
@@ -10,6 +10,12 @@ extend('min', {
   ...min,
   params: ['length'],
   message: 'This field must contain minimum {length} characters',
+})
+
+extend('max', {
+  ...max,
+  params: ['length'],
+  message: 'This field must contain maximum {length} characters',
 })
 
 extend('is_unique', {

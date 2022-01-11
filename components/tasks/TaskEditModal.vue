@@ -9,7 +9,8 @@
               v-slot="{ errors }"
               :rules="{
                 required: true,
-                min: 3,
+                min: 4,
+                max: 64,
                 is_unique: titleWasChanged ? [getTasksTitle] : false,
               }"
             >

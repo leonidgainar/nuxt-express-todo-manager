@@ -6,7 +6,12 @@
         <div class="mb-4">
           <ValidationProvider
             v-slot="{ errors }"
-            :rules="{ required: true, min: 3, is_unique: [getTasksTitle] }"
+            :rules="{
+              required: true,
+              min: 4,
+              max: 64,
+              is_unique: [getTasksTitle],
+            }"
           >
             <label for="title" class="form-label"> Title </label>
             <input

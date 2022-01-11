@@ -7,6 +7,12 @@ require('dotenv').config({
 })
 
 // DB connection
+
+// mongoose.connect('mongodb://localhost:27017/todo-manager', {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// })
+
 mongoose.connect(process.env.MONGODB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
