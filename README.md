@@ -1,5 +1,7 @@
 # nuxt-express-todo-manager
 
+## Live demo [here](https://nuxt-express-todo-manager.herokuapp.com/)
+
 ## Build Setup
 
 ```bash
