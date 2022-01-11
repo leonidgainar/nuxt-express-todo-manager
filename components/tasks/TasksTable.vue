@@ -21,10 +21,15 @@
         <tbody class="table-body">
           <tr v-for="task in tasks" :key="task._id">
             <td class="px-6 py-4 text-left">
-              {{ truncateText(task.title, 20) }}
+              <span :title="task.title">
+                {{ truncateText(task.title, 20) }}
+              </span>
             </td>
             <td class="px-6 py-4 text-left">
-              <span v-if="getUserById(task.assignedTo)">
+              <span
+                v-if="getUserById(task.assignedTo)"
+                :title="getUserById(task.assignedTo).name"
+              >
                 {{ truncateText(getUserById(task.assignedTo).name, 20) }}
               </span>
               <span v-else> N/A </span>
@@ -33,9 +38,11 @@
               <TaskStatusLabel :status="task.complete" />
             </td>
             <td class="px-6 py-4 text-right text-xs">
-              <button class="btn-primary" @click="editTask(task)">Edit</button>
+              <button class="btn-primary mb-2" @click="editTask(task)">
+                Edit
+              </button>
               <button
-                class="btn-danger ml-2 mt-2 md:mt-0"
+                class="btn-danger ml-2"
                 @click="deleteAndUnassignTask(task)"
               >
                 Delete
