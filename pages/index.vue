@@ -5,21 +5,15 @@
         <UserForm />
       </div>
       <div class="flex justify-center">
-        <client-only>
-          <TaskForm />
-        </client-only>
+        <TaskForm />
       </div>
     </div>
     <div class="grid grid-cols-1 xl:grid-cols-2">
       <div class="flex justify-center mt-4">
-        <client-only>
-          <UsersTable />
-        </client-only>
+        <UsersTable />
       </div>
       <div class="flex justify-center mt-4">
-        <client-only>
-          <TasksTable />
-        </client-only>
+        <TasksTable />
       </div>
     </div>
   </div>
